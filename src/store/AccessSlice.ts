@@ -48,7 +48,7 @@ const initialState: InitialStateType = {
 
 const signInRequest = createAsyncThunk('access/signInRequest', async ({ email, password }: SignInDetailsType, { rejectWithValue }) => {
     try {
-        const response = await axios.post('http://localhost:2000/api/signin', { email, password });
+        const response = await axios.post('https://invoice-generator-backend-7.onrender.com/api/signin', { email, password });
         if (response.status) {
             return response.data;
         } else {
@@ -65,7 +65,7 @@ const signInRequest = createAsyncThunk('access/signInRequest', async ({ email, p
 
 const signUpRequest = createAsyncThunk('access/signUpRequest', async ({name, email, password }: SignUpDetailsType, { rejectWithValue }) => {
     try {
-        const response = await axios.post('http://localhost:2000/api/signup', {name, email, password });
+        const response = await axios.post('https://invoice-generator-backend-7.onrender.com/api/signup', {name, email, password });
         if (response.status) {
             return response.data;
         } else {
@@ -84,7 +84,7 @@ const addProductRequest=createAsyncThunk('access/addToProduct',async ({productDa
 {
     try 
     {
-        let response=await axios.post('http://localhost:2000/api/product/add',productData,{
+        let response=await axios.post('https://invoice-generator-backend-7.onrender.com/api/product/add',productData,{
             headers:{
                 Authorization:`Bearer ${token}`
             }
@@ -113,7 +113,7 @@ const downloadInvoiceRequest=createAsyncThunk('access/downloadInvoice',async ({t
     try 
     {
         console.log(token+"BLAZING")
-        let response=await axios.post('http://localhost:2000/api/generate-pdf',{},{
+        let response=await axios.post('https://invoice-generator-backend-7.onrender.com/api/generate-pdf',{},{
             headers:{
                 Authorization:`Bearer ${token}`
             },responseType: 'blob' 
@@ -142,7 +142,7 @@ let getProductsRequest=createAsyncThunk('access/getProductsRequest',async ()=>
 {
     try 
     {
-        let response=await axios.get('http://localhost:2000/api/products/get')
+        let response=await axios.get('https://invoice-generator-backend-7.onrender.com/api/products/get')
         if(response.status)
         {
             return response.data
